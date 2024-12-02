@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Porównanie rozwiązań do analizy wideo - Heyken.io</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50">
+<header class="bg-white shadow-sm">
+    <nav class="container mx-auto px-6 py-4">
+        <div class="flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-gray-800">heyken.io</h1>
+            <div class="space-x-4">
+                <a href="index.html" class="text-gray-600 hover:text-gray-900">Strona główna</a>
+                <a href="use_cases.html" class="text-gray-600 hover:text-gray-900">Use Cases</a>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<main class="container mx-auto px-6 py-12">
+    <h1 class="text-3xl font-bold text-center mb-12">Porównanie rozwiązań do analizy wideo w czasie rzeczywistym</h1>
+
+    <div class="overflow-x-auto bg-white rounded-lg shadow-lg p-6 mb-12">
+        <table class="w-full">
+            <thead>
+            <tr class="border-b-2 border-gray-200">
+                <th class="px-6 py-4 text-left">Funkcje</th>
+                <th class="px-6 py-4 text-center bg-blue-50">HeyKen.io</th>
+                <th class="px-6 py-4 text-center">AWS Rekognition</th>
+                <th class="px-6 py-4 text-center">Google Vision AI</th>
+                <th class="px-6 py-4 text-center">Azure Video Analyzer</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="border-b border-gray-200">
+                <td class="px-6 py-4 font-medium">Sterowanie głosowe</td>
+                <td class="px-6 py-4 text-center bg-blue-50">✓</td>
+                <td class="px-6 py-4 text-center">✗</td>
+                <td class="px-6 py-4 text-center">✗</td>
+                <td class="px-6 py-4 text-center">✗</td>
+            </tr>
+            <tr class="border-b border-gray-200">
+                <td class="px-6 py-4 font-medium">Analiza w czasie rzeczywistym</td>
+                <td class="px-6 py-4 text-center bg-blue-50">✓</td>
+                <td class="px-6 py-4 text-center">✓</td>
+                <td class="px-6 py-4 text-center">✓</td>
+                <td class="px-6 py-4 text-center">✓</td>
+            </tr>
+            <tr class="border-b border-gray-200">
+                <td class="px-6 py-4 font-medium">Płatność za keyframe</td>
+                <td class="px-6 py-4 text-center bg-blue-50">✓</td>
+                <td class="px-6 py-4 text-center">✗</td>
+                <td class="px-6 py-4 text-center">✗</td>
+                <td class="px-6 py-4 text-center">✗</td>
+            </tr>
+            <tr class="border-b border-gray-200">
+                <td class="px-6 py-4 font-medium">Brak wygasania środków</td>
+                <td class="px-6 py-4 text-center bg-blue-50">✓</td>
+                <td class="px-6 py-4 text-center">✗</td>
+                <td class="px-6 py-4 text-center">✗</td>
+                <td class="px-6 py-4 text-center">✗</td>
+            </tr>
+            <tr class="border-b border-gray-200">
+                <td class="px-6 py-4 font-medium">Model cenowy</td>
+                <td class="px-6 py-4 text-center bg-blue-50">Tokeny za pakiet</td>
+                <td class="px-6 py-4 text-center">Pay-as-you-go</td>
+                <td class="px-6 py-4 text-center">Pay-as-you-go</td>
+                <td class="px-6 py-4 text-center">Pay-as-you-go</td>
+            </tr>
+            <tr class="border-b border-gray-200">
+                <td class="px-6 py-4 font-medium">Koszt na minutę*</td>
+                <td class="px-6 py-4 text-center bg-blue-50">~0.60 USD</td>
+                <td class="px-6 py-4 text-center">0.90 USD</td>
+                <td class="px-6 py-4 text-center">0.85 USD</td>
+                <td class="px-6 py-4 text-center">0.80 USD</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8 mb-12">
+        <div class="bg-white rounded-lg shadow-lg p-6">
+            <h2 class="text-xl font-bold mb-4">Przewagi HeyKen.io</h2>
+            <ul class="space-y-4">
+                <li class="flex items-start">
+                    <span class="text-green-500 mr-2">✓</span>
+                    <span>Intuicyjne sterowanie głosowe zamiast skomplikowanych interfejsów API</span>
+                </li>
+                <li class="flex items-start">
+                    <span class="text-green-500 mr-2">✓</span>
+                    <span>Płatność tylko za analizę keyframe, nie za całość materiału</span>
+                </li>
+                <li class="flex items-start">
+                    <span class="text-green-500 mr-2">✓</span>
+                    <span>Brak comiesięcznej subskrypcji - płacisz za tokeny, które nigdy nie wygasają</span>
+                </li>
+                <li class="flex items-start">
+                    <span class="text-green-500 mr-2">✓</span>
+                    <span>Bonusy za większe pakiety tokenów - do 25% więcej analizy w tej samej cenie</span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-lg p-6">
+            <h2 class="text-xl font-bold mb-4">Typowe zastosowania</h2>
+            <div class="grid gap-4">
+                <div class="p-4 bg-gray-50 rounded">
+                    <h3 class="font-semibold mb-2">Monitoring produkcji</h3>
+                    <p>Analiza jakości, wykrywanie anomalii, kontrola procesu</p>
+                </div>
+                <div class="p-4 bg-gray-50 rounded">
+                    <h3 class="font-semibold mb-2">Bezpieczeństwo</h3>
+                    <p>Monitoring obiektów, detekcja zdarzeń, kontrola dostępu</p>
+                </div>
+                <div class="p-4 bg-gray-50 rounded">
+                    <h3 class="font-semibold mb-2">Sport</h3>
+                    <p>Analiza treningu, statystyki meczowe, rozwój zawodników</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-sm text-gray-600 mt-8">
+        * Szacunkowy koszt dla standardowego strumienia wideo 30 fps, przy założeniu 20% klatek kluczowych
+    </div>
+</main>
+
+<footer class="bg-gray-800 text-white py-12">
+    <div class="container mx-auto px-6">
+        <div class="grid md:grid-cols-4 gap-8">
+            <div>
+                <h4 class="font-semibold mb-4">O nas</h4>
+                <ul class="space-y-2">
+                    <li><a href="#" class="hover:text-gray-300">O firmie</a></li>
+                    <li><a href="#" class="hover:text-gray-300">Kontakt</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4">Dokumentacja</h4>
+                <ul class="space-y-2">
+                    <li><a href="#" class="hover:text-gray-300">API</a></li>
+                    <li><a href="#" class="hover:text-gray-300">Integracja</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4">Prywatność</h4>
+                <ul class="space-y-2">
+                    <li><a href="#" class="hover:text-gray-300">Polityka prywatności</a></li>
+                    <li><a href="#" class="hover:text-gray-300">Warunki użytkowania</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

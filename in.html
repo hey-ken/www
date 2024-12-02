@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heyken.io - AI Video Stream Assistant</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <script src="https://www.paypal.com/sdk/js?client-id=AeEQLQ4RDcA6Ue2VSGgwNTSx7IUITfEDSQ3lw8s1xei8jSqxDjpyUL85tz8IJzRKS5MLdsYUnLAMXqhM&currency=USD"></script>
+</head>
+<body class="bg-gray-50">
+
+<header class="bg-white shadow-sm">
+    <nav class="container mx-auto px-6 py-4">
+        <div class="flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-gray-800">heyken.io</h1>
+            <div class="space-x-4">
+                <a href="use_cases.html" class="text-gray-600 hover:text-gray-900">Use Cases</a>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<main class="container mx-auto px-6 py-12">
+    <!-- Previous sections remain the same until calculator -->
+    <section class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-gray-900 mb-4">AI Asystent do analizy strumieni wideo</h2>
+        <p class="text-xl text-gray-600 mb-8">Zapytaj głosowo "heyken" i dowiedz się, co wydarzyło się na video-streamach</p>
+    </section>
+
+    <section id="calculator" class="bg-white rounded-lg shadow-lg p-8 mb-16">
+        <h3 class="text-2xl font-semibold mb-6">Kalkulator kosztów</h3>
+
+        <div class="mb-6">
+            <label class="block text-gray-700 mb-2">Liczba kamer:</label>
+            <input type="range" min="1" max="10" value="2" class="w-full" id="camerasRange">
+            <output id="camerasValue" class="block mt-2">2 kamery</output>
+        </div>
+
+        <div class="mb-6">
+            <label class="block text-gray-700 mb-2">Długość bufora:</label>
+            <input type="range" min="10" max="600" step="10" value="60" class="w-full" id="bufferRange">
+            <output id="bufferValue" class="block mt-2">60 klatek</output>
+        </div>
+
+        <div class="p-4 bg-gray-100 rounded-lg mb-6">
+            <p class="mb-2"><strong>Koszt za jedno zapytanie:</strong> <span id="queryCost">0.12</span> USD</p>
+            <p class="text-sm text-gray-600">Bufor to ilość materiału wideo analizowanego wstecz od momentu
+                zapytania</p>
+        </div>
+
+        <div class="mb-6">
+            <label class="block text-gray-700 mb-2">Kwota do wykorzystania:</label>
+            <input type="range" min="10" max="200" step="10" value="100" class="w-full" id="amountRange">
+            <output id="amountValue" class="block mt-2">100 USD (zawiera 20% zniżki!)</output>
+            <output id="queriesAvailable" class="block mt-2 text-green-600">Liczba dostępnych zapytań: 1000</output>
+        </div>
+
+        <!-- New Payment Section -->
+        <div class="mt-8 border-t pt-6">
+            <div id="payment-summary" class="mb-6">
+                <h4 class="font-semibold mb-4">Podsumowanie zamówienia</h4>
+                <div class="bg-blue-50 p-4 rounded-lg mb-4">
+                    <p class="mb-2">Wybrana kwota: <span id="selectedAmount">100 USD</span></p>
+                    <p id="bonusInfo" class="text-green-600">+ 20% bonus!</p>
+                    <p class="text-sm text-gray-600 mt-2">Środki nigdy nie wygasają i możesz ich użyć w dowolnym
+                        momencie</p>
+                </div>
+            </div>
+
+            <div id="paypal-button-container" class="max-w-md mx-auto"></div>
+
+            <p class="text-center text-sm text-gray-500 mt-4">
+                Płatność jest bezpieczna i szyfrowana
+            </p>
+        </div>
+    </section>
+
+    <section id="value-proposition" class="bg-white rounded-lg shadow-lg p-8 mb-16">
+        <h3 class="text-2xl font-bold mb-6">Inteligentna analiza wideo</h3>
+
+        <div class="mb-8">
+            <p class="text-lg mb-4">Płacisz tylko za keyframe - klatki zawierające faktyczne zmiany w obrazie.</p>
+
+            <div class="bg-blue-50 p-6 rounded-lg mb-6">
+                <h4 class="font-semibold mb-4">Jak to działa?</h4>
+                <ol class="space-y-3">
+                    <li class="flex items-start">
+                        <span class="font-bold mr-2">1.</span> System automatycznie wykrywa znaczące zmiany w obrazie
+                    </li>
+                    <li class="flex items-start">
+                        <span class="font-bold mr-2">2.</span> Tylko unikalne keyframe są wysyłane do analizy AI
+                    </li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6 mb-8">
+            <div class="bg-green-50 p-6 rounded-lg">
+                <h4 class="font-semibold mb-3">Oszczędność</h4>
+                <p>Płacisz tylko za analizę rzeczywistych zmian, nie za czas nagrania</p>
+            </div>
+            <div class="bg-green-50 p-6 rounded-lg">
+                <h4 class="font-semibold mb-3">Precyzja</h4>
+                <p>Koncentrujemy się na istotnych zdarzeniach, pomijając niezmienne tło</p>
+            </div>
+            <div class="bg-green-50 p-6 rounded-lg">
+                <h4 class="font-semibold mb-3">Skuteczność</h4>
+                <p>Otrzymujesz analizę tylko wartościowych zmian w monitorowanym obszarze</p>
+            </div>
+        </div>
+
+        <p class="text-sm text-gray-600">Cena: 0.01 USD za keyframe/kamerę</p>
+    </section>
+
+
+    <section id="cases" class="mb-16">
+        <div class="flex justify-between items-center mb-6">
+            <h3 class="text-2xl font-semibold">Przykładowe zastosowania</h3>
+            <a href="/use_cases.html" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition">
+                Zobacz wszystkie przypadki użycia →
+            </a>
+        </div>
+        <div class="grid md:grid-cols-3 gap-6">
+            <div class="bg-white p-6 rounded-lg shadow">
+                <h4 class="font-semibold mb-2">Monitoring produkcji</h4>
+                <p>Natychmiastowa analiza zdarzeń na liniach produkcyjnych bez konieczności przewijania nagrań. Reaguj
+                    na zdarzenia w czasie rzeczywistym i zwiększaj efektywność procesu produkcyjnego.</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow">
+                <h4 class="font-semibold mb-2">Bezpieczeństwo obiektów</h4>
+                <p>Szybka weryfikacja zdarzeń z wielu kamer jednocześnie poprzez proste zapytanie głosowe. Idealne dla
+                    centrów handlowych, magazynów i obiektów użyteczności publicznej.</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow">
+                <h4 class="font-semibold mb-2">Analiza sportowa</h4>
+                <p>Błyskawiczna analiza akcji w trakcie treningów i meczów. Umożliwia trenerom i analitykom
+                    natychmiastowy dostęp do kluczowych momentów bez przerywania gry.</p>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+
+<footer class="bg-gray-800 text-white py-12">
+    <div class="container mx-auto px-6">
+        <div class="grid md:grid-cols-4 gap-8">
+            <div>
+                <h4 class="font-semibold mb-4">O nas</h4>
+                <ul class="space-y-2">
+                    <li><a href="#" class="hover:text-gray-300">O firmie</a></li>
+                    <li><a href="#" class="hover:text-gray-300">Kontakt</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4">Dokumentacja</h4>
+                <ul class="space-y-2">
+                    <li><a href="#" class="hover:text-gray-300">API</a></li>
+                    <li><a href="#" class="hover:text-gray-300">Integracja</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4">Prywatność</h4>
+                <ul class="space-y-2">
+                    <li><a href="#" class="hover:text-gray-300">Polityka prywatności</a></li>
+                    <li><a href="#" class="hover:text-gray-300">Warunki użytkowania</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    const camerasRange = document.getElementById('camerasRange');
+    const bufferRange = document.getElementById('bufferRange');
+    const amountRange = document.getElementById('amountRange');
+    const camerasValue = document.getElementById('camerasValue');
+    const bufferValue = document.getElementById('bufferValue');
+    const amountValue = document.getElementById('amountValue');
+    const queryCost = document.getElementById('queryCost');
+    const queriesAvailable = document.getElementById('queriesAvailable');
+    const selectedAmount = document.getElementById('selectedAmount');
+    const bonusInfo = document.getElementById('bonusInfo');
+
+    function updateCalculations() {
+        const cameras = parseInt(camerasRange.value);
+        const buffer = parseInt(bufferRange.value);
+        const amount = parseInt(amountRange.value);
+
+        camerasValue.textContent = `${cameras} ${cameras === 1 ? 'kamera' : 'kamery'}`;
+        bufferValue.textContent = `${buffer} różnych klatek (keyframe)`;
+
+        // Calculate cost per query (1 cent per camera per 2 seconds)
+        const cost = (cameras * Math.ceil(buffer / 2) * 0.01).toFixed(2);
+        queryCost.textContent = cost;
+
+        // Calculate available queries
+        let effectiveAmount = amount;
+        if (amount >= 100) {
+            effectiveAmount = amount * 1.2; // 20% bonus
+            amountValue.textContent = `${amount} USD (zawiera 20% zniżki!)`;
+            bonusInfo.style.display = 'block';
+        } else {
+            amountValue.textContent = `${amount} USD`;
+            bonusInfo.style.display = 'none';
+        }
+
+        selectedAmount.textContent = `${amount} USD`;
+        const queries = Math.floor(effectiveAmount / cost);
+        queriesAvailable.textContent = `Liczba dostępnych zapytań: ${queries}`;
+    }
+
+    // PayPal integration
+    paypal.Buttons({
+        createOrder: function (data, actions) {
+            return actions.order.create({
+                purchase_units: [{
+                    amount: {
+                        value: amountRange.value
+                    }
+                }]
+            });
+        },
+        onApprove: function (data, actions) {
+            return actions.order.capture().then(function (details) {
+                // Show success message
+                alert('Płatność zrealizowana! Dziękujemy za zakup.');
+                // Here you would typically call your backend to credit the account
+            });
+        }
+    }).render('#paypal-button-container');
+
+    // Event listeners
+    camerasRange.addEventListener('input', updateCalculations);
+    bufferRange.addEventListener('input', updateCalculations);
+    amountRange.addEventListener('input', updateCalculations);
+
+    // Initial calculation
+    updateCalculations();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heyken.io - AI Video Stream Assistant</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <script src="https://www.paypal.com/sdk/js?client-id=AeEQLQ4RDcA6Ue2VSGgwNTSx7IUITfEDSQ3lw8s1xei8jSqxDjpyUL85tz8IJzRKS5MLdsYUnLAMXqhM&currency=USD"></script>
+
+</head>
+<body class="bg-gray-50">
+
+<header class="bg-white shadow-sm">
+    <nav class="container mx-auto px-6 py-4">
+        <div class="flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-gray-800">heyken.io</h1>
+            <div class="space-x-4">
+                <a href="use_cases.html" class="text-gray-600 hover:text-gray-900">Use Cases</a>
+                <a href="comprasion.html" class="text-gray-600 hover:text-gray-900">Comparasion</a>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<main class="container mx-auto px-6 py-12 text-xl">
+    <!-- Previous sections remain the same until calculator -->
+    <section class="text-center text-2xl mb-16">
+        <h2 class="font-semibold text-gray-600 mb-4">Głosowy asystent do analizy strumieni wideo w czasie rzeczywistym</h2>
+        <p class="text-gray-800 mb-4">Wystarczy powiedzieć <span class="text-blue-800">HeyKen</span>, aby dowiedzieć się dokładnie, co się
+            właśnie wydarzyło ...</p>
+        <p class="text-gray-900 mb-4"><span class="text-blue-800">HeyKen</span> analizuje video w czasie rzeczywistym z systemów monitoringu,
+            produkcji, ...</p>
+    </section>
+
+
+    <section id="cases" class="mb-16">
+        <div class="flex justify-between items-center mb-6">
+            <h3 class="text-2xl font-semibold">Przykładowe zastosowania</h3>
+            <a href="/use_cases.html" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition">
+                Zobacz wszystkie przypadki użycia →
+            </a>
+        </div>
+        <div class="grid md:grid-cols-3 gap-6">
+            <div class="bg-white p-6 rounded-lg shadow">
+                <h4 class="font-semibold mb-2">Monitoring produkcji</h4>
+                <p>Natychmiastowa analiza zdarzeń na liniach produkcyjnych bez konieczności przewijania nagrań. Reaguj
+                    na zdarzenia w czasie rzeczywistym i zwiększaj efektywność procesu produkcyjnego.</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow">
+                <h4 class="font-semibold mb-2">Bezpieczeństwo obiektów</h4>
+                <p>Szybka weryfikacja zdarzeń z wielu kamer jednocześnie poprzez proste zapytanie głosowe. Idealne dla
+                    centrów handlowych, magazynów i obiektów użyteczności publicznej.</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow">
+                <h4 class="font-semibold mb-2">Analiza sportowa</h4>
+                <p>Błyskawiczna analiza akcji w trakcie treningów i meczów. Umożliwia trenerom i analitykom
+                    natychmiastowy dostęp do kluczowych momentów bez przerywania gry.</p>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="calculator" class="bg-white rounded-lg shadow-lg p-8 mb-16">
+        <h3 class="text-2xl font-semibold mb-6">Kalkulator kosztów</h3>
+        <p class="text-gray-600 mb-8">Płacisz tylko za rzeczywistą analizę,
+            a nie za cały czas nagrania - wystarczy określić ilość kamer i długość bufora,
+            a następnie doładować konto potrzebną ilością tokenów.</p>
+        <div class="mb-6">
+            <div class="flex items-center justify-between gap-4">
+                <div class="">
+                    <label class="text-gray-500 mb-2">Ilość kamer:</label>
+                </div>
+                <div class="">
+                    <output id="camerasValue" class="">2 kamery</output>
+                </div>
+            </div>
+            <div class="flex items-center justify-between gap-4">
+                <input type="range" min="1" max="10" value="2" class="w-full" id="camerasRange">
+            </div>
+        </div>
+
+        <div class="mb-6">
+            <div class="flex items-center justify-between gap-4">
+                <div class="">
+                    <label class="text-gray-500 mb-2">Bufor:</label>
+                </div>
+                <div class="">
+                    <output id="bufferValue" class="">60 klatek</output>
+                    <span>różnych klatek</span>
+                </div>
+            </div>
+            <div class="flex items-center justify-between gap-4">
+                <input type="range" min="10" max="600" step="10" value="60" class="w-full" id="bufferRange">
+            </div>
+            <p class="text-gray-500">Bufor to ilość różniących się klatek (keyframe) analizowanego materiału wideo</p>
+
+        </div>
+
+        <div class="text-gray-500 mb-6">
+            <p class="mb-2"><span class="mb-2">Ilość tokenów na zapytanie:</span> <span id="queryCost"
+                                                                                        class="text-gray-900">0.12</span>
+            </p>
+            <p class="mb-2"><span class="mb-2">Limit zapytań w ramach budżetu:</span> <span class="text-gray-900 mb-2"
+                                                                                            id="queriesAvailable">0</span>
+            </p>
+        </div>
+
+        <div class="mb-6">
+
+            <div class="mb-6">
+                <div class="font-bold p-4 rounded-lg border border-green-700 rounded-lg">
+                    <div class="text-center">
+                        <p id="nextTierInfo" class="text-green-700">od 50 USD otrzymasz +10% tokenów</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex items-center justify-center space-x-6 mb-6">
+
+                <button onclick="decreaseAmount()"
+                        class="bg-blue-100 hover:bg-blue-200 text-blue-800 font-bold py-2 px-4 rounded-lg">
+                    -25 USD
+                </button>
+                <div class="text-center">
+                    <div id="amountValue" class="text-4xl font-bold text-gray-800">50 USD</div>
+                </div>
+                <button onclick="increaseAmount()"
+                        class="bg-blue-100 hover:bg-blue-200 text-blue-800 font-bold py-2 px-4 rounded-lg">
+                    +25 USD
+                </button>
+            </div>
+
+            <div id="payment-summary" class="mb-8 mt-4">
+                <div class="">
+                    <div class="text-center p-6 border border-blue-700 rounded-lg">
+                        <p class="text-5xl font-bold text-blue-800" id="totalTokens">500 tokenów</p>
+                    </div>
+                    <div class="text-center p-4">
+                        <p id="bonusInfo" class="text-green-700 text-3xl font-bold"></p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div id="paypal-button-container" class="max-w-md mx-auto"></div>
+
+            <div class="text-green-700 text-xl mb-1 mt-8 p-4">
+
+                <p class="text-center">
+                    Środki nigdy nie wygasają
+                </p>
+                <p class="text-center mt-4">
+                    Płatność jest szyfrowana
+                </p>
+            </div>
+        </div>
+
+
+    </section>
+
+    <section id="value-proposition" class="bg-white rounded-lg shadow-lg p-8 mb-16">
+        <h3 class="text-2xl font-bold mb-6">Inteligentna analiza wideo</h3>
+
+        <div class="mb-8">
+            <p class="text-lg mb-4">Płacisz tylko za keyframe - klatki zawierające faktyczne zmiany w obrazie.</p>
+
+            <div class="bg-blue-50 p-6 rounded-lg mb-6">
+                <h4 class="font-semibold mb-4">Jak to działa?</h4>
+                <ol class="space-y-3">
+                    <li class="flex items-start">
+                        <span class="font-bold mr-2">1.</span> System automatycznie wykrywa znaczące zmiany w obrazie
+                    </li>
+                    <li class="flex items-start">
+                        <span class="font-bold mr-2">2.</span> Tylko unikalne keyframe są wysyłane do analizy AI
+                    </li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6 mb-8">
+            <div class="bg-green-50 p-6 rounded-lg">
+                <h4 class="font-semibold mb-3">Oszczędność</h4>
+                <p>Płacisz tylko za analizę rzeczywistych zmian, nie za czas nagrania</p>
+            </div>
+            <div class="bg-green-50 p-6 rounded-lg">
+                <h4 class="font-semibold mb-3">Precyzja</h4>
+                <p>Koncentrujemy się na istotnych zdarzeniach, pomijając niezmienne tło</p>
+            </div>
+            <div class="bg-green-50 p-6 rounded-lg">
+                <h4 class="font-semibold mb-3">Skuteczność</h4>
+                <p>Otrzymujesz analizę tylko wartościowych zmian w monitorowanym obszarze</p>
+            </div>
+        </div>
+
+        <p class="text-sm text-gray-600">Cena: 0.01 USD za keyframe/kamerę</p>
+    </section>
+
+
+</main>
+
+
+<footer class="bg-gray-800 text-white py-12">
+    <div class="container mx-auto px-6">
+        <div class="grid md:grid-cols-4 gap-8">
+            <div>
+                <h4 class="font-semibold mb-4">O nas</h4>
+                <ul class="space-y-2">
+                    <li><a href="#" class="hover:text-gray-300">O firmie</a></li>
+                    <li><a href="#" class="hover:text-gray-300">Kontakt</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4">Dokumentacja</h4>
+                <ul class="space-y-2">
+                    <li><a href="#" class="hover:text-gray-300">API</a></li>
+                    <li><a href="#" class="hover:text-gray-300">Integracja</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4">Prywatność</h4>
+                <ul class="space-y-2">
+                    <li><a href="#" class="hover:text-gray-300">Polityka prywatności</a></li>
+                    <li><a href="#" class="hover:text-gray-300">Warunki użytkowania</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    const camerasRange = document.getElementById('camerasRange');
+    const bufferRange = document.getElementById('bufferRange');
+    const camerasValue = document.getElementById('camerasValue');
+    const bufferValue = document.getElementById('bufferValue');
+    const queryCost = document.getElementById('queryCost');
+    const queriesAvailable = document.getElementById('queriesAvailable');
+
+    function updateCalculations() {
+        const cameras = parseInt(camerasRange.value);
+        const buffer = parseInt(bufferRange.value);
+
+        camerasValue.textContent = `${cameras} ${cameras === 1 ? 'kamera' : 'kamery'}`;
+        if (cameras > 4) camerasValue.textContent = `${cameras} kamer`;
+        bufferValue.textContent = `${buffer}`;
+
+        // Oblicz koszt w tokenach (1 token na kamerę na każde 2 sekundy)
+        // const tokensPerQuery = cameras * Math.ceil(buffer / 2);
+        // Oblicz koszt w tokenach (1 token na kamerę na każdą 1 klatkę)
+        const tokensPerQuery = cameras * buffer;
+        queryCost.textContent = `${tokensPerQuery}`;
+
+        // Zaktualizuj liczbę dostępnych zapytań bazując na tokenach
+        const currentTokens = parseInt(document.getElementById('totalTokens').textContent);
+        const queries = Math.floor(currentTokens / tokensPerQuery);
+        queriesAvailable.textContent = `${queries}`;
+    }
+
+    let currentAmount = 50;
+
+    function updateDisplay() {
+        const amountValue = document.getElementById('amountValue');
+        const totalTokens = document.getElementById('totalTokens');
+        const bonusInfo = document.getElementById('bonusInfo');
+        const nextTierInfo = document.getElementById('nextTierInfo');
+
+        const baseTokens = currentAmount * 100;
+        let bonusPercentage = 0;
+
+        if (currentAmount >= 600) {
+            bonusPercentage = 25;
+            nextTierInfo.textContent = 'otrzymasz +25% tokenów';
+        } else if (currentAmount >= 300) {
+            bonusPercentage = 20;
+            nextTierInfo.textContent = 'od 600 USD otrzymasz +25% tokenów';
+        } else if (currentAmount >= 150) {
+            bonusPercentage = 15;
+            nextTierInfo.textContent = 'od 300 USD otrzymasz +20% tokenów';
+        } else if (currentAmount >= 100) {
+            bonusPercentage = 12;
+            nextTierInfo.textContent = 'od 150 USD otrzymasz +15% tokenów';
+        } else if (currentAmount >= 50) {
+            bonusPercentage = 10;
+            nextTierInfo.textContent = 'od 100 USD otrzymasz +12% tokenów';
+        } else {
+            nextTierInfo.textContent = 'od 50 USD otrzymasz +10% tokenów';
+        }
+
+        const bonus = Math.floor(baseTokens * (bonusPercentage / 100));
+        const total = baseTokens + bonus;
+
+        amountValue.textContent = `${currentAmount} USD`;
+        totalTokens.textContent = `${total} tokenów`;
+        bonusInfo.textContent = bonusPercentage > 0 ? `zawiera bonus ${bonusPercentage}%` : '';
+
+        updateCalculations(); // Aktualizuj obliczenia po zmianie kwoty
+    }
+
+    function decreaseAmount() {
+        if (currentAmount > 25) {
+            currentAmount -= 25;
+            updateDisplay();
+            initializePayPalButtons();
+        }
+    }
+
+    function increaseAmount() {
+        currentAmount += 25;
+        updateDisplay();
+        initializePayPalButtons();
+    }
+
+    function initializePayPalButtons() {
+        document.getElementById('paypal-button-container').innerHTML = '';
+        paypal.Buttons({
+            style: {
+                layout: 'vertical',
+                shape: 'pill',
+                label: 'pay'
+            },
+            createOrder: function (data, actions) {
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: currentAmount
+                        }
+                    }]
+                });
+            },
+            onApprove: function (data, actions) {
+                return actions.order.capture().then(function (details) {
+                    alert('Płatność zrealizowana! Tokeny zostały dodane do Twojego konta.');
+                });
+            }
+        }).render('#paypal-button-container');
+    }
+
+    // Event listeners
+    camerasRange.addEventListener('input', updateCalculations);
+    bufferRange.addEventListener('input', updateCalculations);
+
+    // Initialize
+    updateDisplay();
+    initializePayPalButtons();
+</script>
+</body>
+</html>
